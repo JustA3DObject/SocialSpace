@@ -17,6 +17,17 @@ class Group(models.Model):
     description_html = models.TextField(editable = False, default = "", blank = True)
     members = models.ManyToManyField(User, through = "GroupMember")
 
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        self.discription_html = misaka.html(self.description)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("groups: single", kwargs = {"slug" : self.slug})
+
 class GroupMember(models.Model):
     group = models.ForeignKey(Group, related_name = "memberships")
     user = models.ForeignKey(User, related_name = "user_group")
