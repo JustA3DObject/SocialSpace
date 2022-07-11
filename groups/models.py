@@ -10,3 +10,15 @@ from django import template
 register = template.Library()
 
 # Create your models here.
+class Group(models.Model):
+    pass
+
+class GroupMember(models.Model):
+    group = models.ForeignKey(Group, related_name = "memberships")
+    user = models.ForeignKey(User, related_name = "user_group")
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        unique_together = ("group", "user")
