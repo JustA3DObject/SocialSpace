@@ -17,7 +17,27 @@
     <link rel="stylesheet" href="{% static 'socialspace/css/master.css' %}">
   </head>
   <body>
-    {% block content %}
-    {% endblock %}
+    <nav class="navbar nav" role="navigation">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="{% url 'home' %}">SocialSpace</a>
+        </div>
+        <ul class="nav--list">
+          {% if user.is_authenticated %}
+            <li class="nav--item active"> <a href="#">Post</a> </li>
+            <li class="nav--item"> <a href="#">Groups</a> </li>
+            <li class="nav--item"> <a href="{% url 'accounts:logout' %}">Log Out</a> </li>
+          {% else %}
+            <li class="nav--item"> <a href="#">Groups</a> </li>
+            <li class="nav--item"> <a href="{% url 'accounts:login' %}">Log In</a> </li>
+            <li class="nav--item"> <a href="{% url 'accounts:signup' %}">Sign Up</a> </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container mycontent">
+      {% block content %}
+      {% endblock %}
+    </div>
   </body>
 </html>
