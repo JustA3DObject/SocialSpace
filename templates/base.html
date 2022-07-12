@@ -31,6 +31,7 @@
                 {% if user.is_authenticated %}
                   <li class="nav--item active"> <a href="#">Post</a> </li>
                   <li class="nav--item"> <a href="#">Groups</a> </li>
+                  <li class="nav--item"> <a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a> </li>
                   <li class="nav--item"> <a href="{% url 'accounts:logout' %}">Log Out</a> </li>
                 {% else %}
                   <li class="nav--item"> <a href="#">Groups</a> </li>
