@@ -25,28 +25,34 @@
 </head>
 
 <body>
-    <nav class="navbar nav" role="navigation">
+  <nav class="navbar  mynav" role="navigation" id="navbar">
         <div class="container">
-            <div class="logo">
-                <a class="navbar-brand" href="{% url 'home' %}">SocialSpace</a>
-            </div>
-            <ul class="nav--list">
-                {% if user.is_authenticated %}
-                  <li class="nav--item active"> <a href="{% url 'posts:create' %}">Post</a> </li>
-                  <li class="nav--item"> <a href="{% url 'groups:all' %}">Groups</a> </li>
-                  <li class="nav--item"> <a href="{% url 'groups:create' %}">Create Group</a> </li>
-                  <li class="nav--item"> <a href="{% url 'accounts:logout' %}">Log Out</a> </li>
-                {% else %}
-                  <li class="nav--item"> <a href="{% url 'groups:all' %}">Groups</a> </li>
-                  <li class="nav--item"> <a href="{% url 'accounts:login' %}">Log In</a> </li>
-                  <li class="nav--item"> <a href="{% url 'accounts:signup' %}">Sign Up</a> </li>
-                {% endif %}
+
+          <a class="navbar-brand mynav" href="{% url 'home' %}">SocialSpace</a>
+
+            <ul class="nav navbar-nav navbar-right">
+              {% if user.is_authenticated %}
+                    <li><a href="{% url 'posts:create' %}" class="btn btn-simple">Post</a></li>
+                    <li><a href="{% url 'groups:all' %}" class="btn btn-simple">Groups</a></li>
+                    <li><a href="{% url 'groups:create' %}" class="btn btn-simple">Create Group</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+              {% else %}
+                    <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
+                    <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
+                    <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+              {% endif %}
             </ul>
+
+
+
         </div>
-    </nav>
+      </nav>
     <div class="container mycontent">
         {% block content %} {% endblock %}
     </div>
-</body>
 
+    <canvas id="canvas"></canvas>
+
+</body>
+<script type="text/javascript" src="{% static 'socialspace/js/master.js' %}"></script>
 </html>
