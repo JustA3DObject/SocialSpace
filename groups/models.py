@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-
+from django.urls import reverse
 import misaka
 
 from django.contrib.auth import get_user_model
@@ -26,7 +26,7 @@ class Group(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("groups: single", kwargs = {"slug" : self.slug})
+        return reverse("groups:single", kwargs = {"slug" : self.slug})
 
 class GroupMember(models.Model):
     group = models.ForeignKey(Group, related_name = "memberships", on_delete = models.DO_NOTHING)
