@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views import generic
+from django.contrib import messages
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -54,7 +55,7 @@ class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
 class DeletePost(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Post
     select_related = ("user", "group")
-    success_url = reverse_lazy("posts: all")
+    success_url = reverse_lazy("posts:all")
 
     def get_queryset(self):
         queryset = super().get_queryset()
