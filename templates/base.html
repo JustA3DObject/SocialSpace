@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>SocialSpace</title>
 
     <!-- Bootstrap CSS -->
@@ -16,29 +19,30 @@
 
     <!-- Master CSS -->
     <link rel="stylesheet" href="{% static 'socialspace/css/master.css' %}">
-  </head>
-  <body>
+</head>
+
+<body>
     <nav class="navbar nav" role="navigation">
-      <div class="container">
-        <div class="logo">
-          <a class="navbar-brand" href="{% url 'home' %}">SocialSpace</a>
+        <div class="container">
+            <div class="logo">
+                <a class="navbar-brand" href="{% url 'home' %}">SocialSpace</a>
+            </div>
+            <ul class="nav--list">
+                {% if user.is_authenticated %}
+                  <li class="nav--item active"> <a href="#">Post</a> </li>
+                  <li class="nav--item"> <a href="#">Groups</a> </li>
+                  <li class="nav--item"> <a href="{% url 'accounts:logout' %}">Log Out</a> </li>
+                {% else %}
+                  <li class="nav--item"> <a href="#">Groups</a> </li>
+                  <li class="nav--item"> <a href="{% url 'accounts:login' %}">Log In</a> </li>
+                  <li class="nav--item"> <a href="{% url 'accounts:signup' %}">Sign Up</a> </li>
+                {% endif %}
+            </ul>
         </div>
-        <ul class="nav--list">
-          {% if user.is_authenticated %}
-            <li class="nav--item active"> <a href="#">Post</a> </li>
-            <li class="nav--item"> <a href="#">Groups</a> </li>
-            <li class="nav--item"> <a href="{% url 'accounts:logout' %}">Log Out</a> </li>
-          {% else %}
-            <li class="nav--item"> <a href="#">Groups</a> </li>
-            <li class="nav--item"> <a href="{% url 'accounts:login' %}">Log In</a> </li>
-            <li class="nav--item"> <a href="{% url 'accounts:signup' %}">Sign Up</a> </li>
-          {% endif %}
-        </ul>
-      </div>
     </nav>
     <div class="container mycontent">
-      {% block content %}
-      {% endblock %}
+        {% block content %} {% endblock %}
     </div>
-  </body>
+</body>
+
 </html>
