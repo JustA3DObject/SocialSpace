@@ -17,3 +17,18 @@ A space themed simple social media website.
 * Delete Groups and Posts
 * Check Posts made by other Users
 * Play with stars in the background
+
+## Libs used:
+* os
+* misaka
+* braces
+* django.core
+* django.contrib
+* django.apps
+* django.db
+* django.conf
+* django.urls
+* django.views
+* django.utils
+* django.shortcuts
+
