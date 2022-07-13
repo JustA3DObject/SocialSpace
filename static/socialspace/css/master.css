@@ -13,6 +13,26 @@
     display: inline;
 }
 
+.nav>.nav-header>.nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+}
+
+.title-content {
+    color: white;
+}
+
+.title-content:hover {
+    color: black;
+    text-decoration: underline, solid;
+}
+
+.nav>.nav-btn {
+    display: none;
+}
+
 body {
   margin: 0;
   overflow: hidden;
