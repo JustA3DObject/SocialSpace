@@ -20,11 +20,11 @@
     padding: 10px 10px 10px 10px;
 }
 
-.title-content {
+.nav-title>a {
     color: white;
 }
 
-.title-content:hover {
+.nav-title>a:hover {
     color: black;
     text-decoration: underline, solid;
 }
@@ -52,6 +52,15 @@
 
 .nav>#nav-check {
     display: none;
+}
+
+@media (max-width:600px) {
+    .nav>.nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
 }
 
 body {
