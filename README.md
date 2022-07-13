@@ -19,9 +19,9 @@ A space themed simple social media website.
 * Django-Bootstrap 5
 
 ## Libs used:
-* os
 * misaka
-* braces
+* Django-Braces
+* os
 * django.core
 * django.contrib
 * django.apps
