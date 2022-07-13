@@ -33,6 +33,10 @@
     display: none;
 }
 
+.nav>#nav-check {
+    display: none;
+}
+
 body {
   margin: 0;
   overflow: hidden;
